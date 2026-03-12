@@ -1,8 +1,21 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
-export class Api {
+export class ApiService {
+  private url = 'https://rickandmortyapi.com/api/character';
+
+  constructor(private http: HttpClient) { }
+
+  getCharacters(): Observable<any> {
+    return this.http.get(this.url);
+  }
   
+  getCharacterById(id: string): Observable<any> {
+  return this.http.get(`${this.url}/${id}`);
+}
+
 }

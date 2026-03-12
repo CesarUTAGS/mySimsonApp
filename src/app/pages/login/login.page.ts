@@ -1,20 +1,35 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { IonicModule, NavController, AlertController } from '@ionic/angular';
+import { DataService } from '../../services/data';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
-  styleUrls: ['./login.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
+  imports: [IonicModule, CommonModule, ReactiveFormsModule]
 })
-export class LoginPage implements OnInit {
+export class LoginPage {
+  loginForm: FormGroup;
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(
+    private fb: FormBuilder,
+    private navCtrl: NavController,
+    private alertCtrl: AlertController,
+    private dataService: DataService
+  ) {
+    this.loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]]
+    });
   }
 
+  async onLogin() {
+    if (this.loginForm.valid) {
+      const { email } = this.loginForm.value;
+      this.dataService.changeUser(email); 
+      this.navCtrl.navigateRoot('/home');
+    }
+  }
 }

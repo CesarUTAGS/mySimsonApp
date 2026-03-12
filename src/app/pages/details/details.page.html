@@ -1,13 +1,36 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>details</ion-title>
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ character?.name || 'Detalles' }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">details</ion-title>
-    </ion-toolbar>
-  </ion-header>
-</ion-content>
+<ion-content class="ion-padding" *ngIf="character">
+  <div class="ion-text-center ion-margin-bottom">
+    <img [src]="character.image" style="border-radius: 50%; width: 150px; border: 4px solid #7044ff;" alt="personaje" />
+  </div>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{ character.name }}</ion-card-title>
+      <ion-card-subtitle>{{ character.species }}</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-list lines="none">
+        <ion-item>
+          <ion-label>Estado: <strong>{{ character.status }}</strong></ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Género: <strong>{{ character.gender }}</strong></ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Origen: <strong>{{ character.origin.name }}</strong></ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content> ```
+

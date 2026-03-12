@@ -1,13 +1,20 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>home</ion-title>
+  <ion-toolbar color="success"> 
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button> </ion-buttons> <ion-title>Personajes API</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">home</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let c of characters" [routerLink]="['/details', c.id]">
+      <ion-avatar slot="start">
+        <img [src]="c.image" alt="imagen personaje"/>
+      </ion-avatar>
+      <ion-label>
+        <h2>{{ c.name }}</h2>
+        <p>{{ c.species }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>

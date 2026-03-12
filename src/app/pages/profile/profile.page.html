@@ -1,20 +1,24 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="danger">
     <ion-buttons slot="start">
-      <ion-menu-button></ion-buttons> </ion-buttons>
-    <ion-title>Título de la Página</ion-title>
-  </ion-toolbar>
-</ion-header>
-    <ion-title>profile</ion-title>
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Mi Perfil</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">profile</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding ion-text-center">
+  <ion-avatar style="margin: auto; width: 100px; height: 100px;">
+    <img src="https://ionicframework.com/docs/img/demos/avatar.svg" alt="avatar" />
+  </ion-avatar>
+  
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Bienvenido de nuevo</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Estás conectado como:</p>
+      <ion-badge color="primary">{{ usuarioLogueado }}</ion-badge>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
