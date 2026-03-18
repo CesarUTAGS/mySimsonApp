@@ -59,3 +59,20 @@ ion-card {
   border-radius: 15px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
+
+/* 1. Definimos la fuente personalizada */
+@font-face {
+  font-family: 'MyComicSans';
+  src: url('./assets/fonts/comic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+/* 2. La aplicamos a TODA la app */
+* {
+  font-family: 'MyComicSans', sans-serif !important;
+}
+
+/* 3. Forzamos en elementos específicos de Ionic */
+ion-title, ion-label, ion-card-title, ion-button, p, h1, h2 {
+  font-family: 'MyComicSans', sans-serif !important;
+}
